@@ -31,7 +31,7 @@ void timer_0()
     contador++;
 }
 void main(void) {
-    setup_timer_0(RTCC_INTERNAL | RTCC_DIV_2);
+    setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8);
     set_timer0(1934464);
     enable_interrupts(int_timer0);
     enable_interrupts(global);
@@ -47,7 +47,7 @@ void main(void) {
     if(CaracterRecibido=="x"|| CaracterRecibido=="X"){
     aux++;
        if(aux==1){//puerto A
-       for(conteo=64;conteo>=1;conteo/=2)
+       for(conteo=128;conteo>=1;conteo/=2)
         {
             output_a(conteo);
             delay_ms(500);
@@ -72,7 +72,7 @@ void main(void) {
     if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
     aux++;
        if(aux==1){//puerto A
-       for(conteo=64;conteo>=1;conteo/=2)
+       for(conteo=128;conteo>=1;conteo/=2)
         {
             output_d(conteo);
             delay_ms(500);

@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.012, 41559               12-jun.-19 13:58
+CCS PCH C Compiler, Version 5.012, 41559               12-jun.-19 14:11
 
                Filename:   C:\Users\L-L-Z\OneDrive\Documentos\Sistemas Embebidos Alumnos\Timer0Parcial\Examen3.lst
 
@@ -2527,8 +2527,8 @@ CCS PCH C Compiler, Version 5.012, 41559               12-jun.-19 13:58
 00122:  MOVWF  FB4
 00124:  CLRF   16
 00126:  CLRF   17
-....................     setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8); 
-00128:  MOVLW  82
+....................     setup_timer_0(RTCC_INTERNAL | RTCC_DIV_2); 
+00128:  MOVLW  80
 0012A:  MOVWF  FD5
 ....................     set_timer0(1934464); 
 0012C:  MOVLW  84
@@ -2596,9 +2596,9 @@ CCS PCH C Compiler, Version 5.012, 41559               12-jun.-19 13:58
 ....................        if(aux==1){//puerto A 
 0018E:  DECFSZ 1F,W
 00190:  BRA    01C0
-....................        for(conteo=128;conteo>=1;conteo/=2) 
+....................        for(conteo=64;conteo>=1;conteo/=2) 
 00192:  CLRF   21
-00194:  MOVLW  80
+00194:  MOVLW  40
 00196:  MOVWF  20
 00198:  MOVF   21,F
 0019A:  BNZ   01A2
@@ -2728,9 +2728,9 @@ CCS PCH C Compiler, Version 5.012, 41559               12-jun.-19 13:58
 ....................        if(aux==1){//puerto A 
 0026A:  DECFSZ 1F,W
 0026C:  BRA    029C
-....................        for(conteo=128;conteo>=1;conteo/=2) 
+....................        for(conteo=64;conteo>=1;conteo/=2) 
 0026E:  CLRF   21
-00270:  MOVLW  80
+00270:  MOVLW  40
 00272:  MOVWF  20
 00274:  MOVF   21,F
 00276:  BNZ   027E

@@ -11,6 +11,10 @@ Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers
 Type=4
 [mru-list]
 1=Examen3.c
+[Opened Files]
+1=Examen3.c
+2=
+3=
 [Units]
 Count=1
 1=Examen3 (main)
