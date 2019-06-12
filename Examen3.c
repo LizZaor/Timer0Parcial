@@ -1,0 +1,80 @@
+#include <18F4620.h>
+#include <stdio.h>
+#include <stdlib.h>
+#fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT
+#fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
+#USE DELAY (clock 40000000)
+#Conteo 0
+
+#define __DEBUG_SERIAL__ //Si comentas esta linea se deshabilita el debug por serial y el PIN_C6 puede ser usado en forma digital I/O
+
+#ifdef __DEBUG_SERIAL__
+   #define TX_232        PIN_C6
+   #define RX_232        PIN_C7
+   #use RS232(BAUD=9600, XMIT=TX_232, BITS=8,PARITY=N, STOP=1,UART1,RCV=RX_232)
+   #use fast_io(c)
+#endif 
+
+#int_rda
+void isr_rda(void){
+
+}
+
+#int_timer0
+void timer_0()
+{ 
+    set_timer0(15536);
+    contador200++;
+}
+void main(void) {
+    setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8);
+    set_timer0(15536);
+    enable_interrupts(int_timer0);
+    enable_interrupts(global);
+    output_a(0x0);   
+    output_b(0x0);    
+    output_d(0x0);
+    while (TRUE) {
+    
+    if(CaracterRecibido=="x"|| CaracterRecibido=="X"){
+    conteo++;
+       if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
+       }      
+    }
+    if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
+    conteo++;
+    if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
+       }      
+    }
+    if(CaracterRecibido=="i"|| CaracterRecibido=="I"){
+    conteo++;
+    if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
+       }      
+    }
+    if(CaracterRecibido=="d"|| CaracterRecibido=="D"){
+    conteo++;
+    if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
+       }      
+    }
+    }
+}
