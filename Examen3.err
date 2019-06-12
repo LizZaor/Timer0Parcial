@@ -1,1 +1,4 @@
-*** Error 49 "Examen3.c" Line 23(5,16): Expecting LVALUE such as a variable name  or  * expression
+>>> Warning 207 "Examen3.c" Line 45(1,1): Code has no effect
+      Memory usage:   ROM=2%      RAM=1% - 1%
+      0 Errors,  1 Warnings.
+Build Successful.

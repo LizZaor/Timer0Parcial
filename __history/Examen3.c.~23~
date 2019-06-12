@@ -4,7 +4,7 @@
 #fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
 #USE DELAY (clock=40000000)
-int flagserial=0;
+#define flagserial 0
 #define __DEBUG_SERIAL__ //Si comentas esta linea se deshabilita el debug por serial y el PIN_C6 puede ser usado en forma digital I/O
 
 #ifdef __DEBUG_SERIAL__
@@ -13,8 +13,7 @@ int flagserial=0;
    #use RS232(BAUD=9600, XMIT=TX_232, BITS=8,PARITY=N, STOP=1,UART1,RCV=RX_232)
    #use fast_io(c)
 #endif 
-
-char CaracterRecibido;
+int CaracterRecibido;
 int contador=0;
 
 int aux=0;
@@ -32,7 +31,7 @@ void timer_0()
 }
 void main(void) {
     setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8);
-    set_timer0(1934464);
+    set_timer0(15536);
     enable_interrupts(int_timer0);
     enable_interrupts(global);
     output_a(0x0);   

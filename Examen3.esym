@@ -1,7 +1,8 @@
-D G "__PCH__" 0 104 ""5.012""
-D G "__DEVICE__" 0 104 "4620"
-D G "__DATE__" 0 104 ""12-jun.-19""
-D G "__TIME__" 0 104 ""13:50:56"" "Standard Header file for the PIC18F4620 device ////////////////"
+D G "RX_232" 0 12 "PIN_C7"
+D G "__PCH__" 0 115 ""5.012""
+D G "__DEVICE__" 0 115 "4620"
+D G "__DATE__" 0 115 ""12-jun.-19""
+D G "__TIME__" 0 115 ""13:58:48"" "Standard Header file for the PIC18F4620 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 43 "int8" `54 
 f B "set_tris_a" 1 43 "void(int8 value)" `53 
@@ -1315,23 +1316,23 @@ V L "n" 6 1322 "int16" `901
 V L "pivot" 6 1323 "int16" `902 
 V L "val" 6 1324 "sint8" `903 
 C L "bsearch" 6 397 1 "FUNCTION"
-D G "flagserial" 0 7 "0"
+V G "flagserial" 0 7 "int8" `911 
 D G "__DEBUG_SERIAL__" 0 8 "" "Si comentas esta linea se deshabilita el debug por serial y el PIN_C6 puede ser usado en forma digital I/O"
 D G "TX_232" 0 11 "PIN_C6"
 D G "RX_232" 0 12 "PIN_C7"
-V G "CaracterRecibido" 0 16 "int8" `915 
-V G "contador" 0 17 "int8" `916 
-V G "aux" 0 19 "int8" `917 
-F G "isr_rda" 0 21 "void()" `918 
-F G "timer_0" 0 28 "void()" `919 
-F G "MAIN" 0 32 "void()" `920 
-V L "conteo" 0 40 "int16" `923 
-C L "MAIN" 0 48 1 "FUNCTION"
-C L "MAIN" 0 48 1 "FUNCTION"
-C L "MAIN" 0 48 1 "FUNCTION"
-C L "MAIN" 0 48 1 "FUNCTION"
-C L "MAIN" 0 48 1 "FUNCTION"
-C L "MAIN" 0 48 1 "FUNCTION"
+V G "CaracterRecibido" 0 17 "int8" `916 
+V G "contador" 0 18 "int8" `917 
+V G "aux" 0 20 "int8" `918 
+F G "isr_rda" 0 22 "void()" `919 
+F G "timer_0" 0 29 "void()" `920 
+F G "MAIN" 0 33 "void()" `921 
+V L "conteo" 0 41 "int16" `924 
+C L "MAIN" 0 49 1 "FUNCTION"
+C L "MAIN" 0 49 1 "FUNCTION"
+C L "MAIN" 0 49 1 "FUNCTION"
+C L "MAIN" 0 49 1 "FUNCTION"
+C L "MAIN" 0 49 1 "FUNCTION"
+C L "MAIN" 0 49 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1
