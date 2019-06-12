@@ -51,63 +51,60 @@ void main(void) {
             output_a(conteo);
             delay_ms(500);
         }
+       aux++;
        }else if(aux==2){//puerto B
        for(conteo=128;conteo>=1;conteo/=2)
         {
             output_b(conteo);
             delay_ms(500);
         }
-       }else if(aux==3){//puerto C
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_d(conteo);
-            delay_ms(500);
-        }
-       aux=0;
-       }       
-    }
-    
-    
-    if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
-    aux++;
-       if(aux==1){//puerto A
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_d(conteo);
-            delay_ms(500);
-        }
-       }else if(aux==2){//puerto B
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_b(conteo);
-            delay_ms(500);
-        }
+       aux++;
        }else if(aux==3){//puerto C
        for(conteo=128;conteo>=1;conteo/=2)
         {
             output_a(conteo);
             delay_ms(500);
         }
-       aux=0;
+       aux=1;
        }       
     }
     
+    
+    if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
+    aux++;
+    if(aux==1){//puerto D
+        
+       aux++;
+       }else if(aux==2){//puerto B
+       aux++;
+       }else if(aux==3){//puerto A
+       aux=1;
+       }      
+    }
+    
     if(CaracterRecibido=="i"|| CaracterRecibido=="I"){
-         for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_b(conteo);
-            delay_ms(500);
-        }
+    aux++;
+    if(aux==1){
+       aux++;
+       }else if(aux==2){
+       aux++;
+       }else if(aux==3){
+       aux=1;
+       }      
     }
     
     
     if(CaracterRecibido=="d"|| CaracterRecibido=="D"){
-         for(conteo=1;conteo<=128;conteo*=2)
-        {
-            output_d(conteo);
-            delay_ms(500);
-        }
-      }
+    aux++;
+    if(aux==1){
+       aux++;
+       }else if(aux==2){
+       aux++;
+       }else if(aux==3){
+       aux=1;
+       }      
     }
-  }
+    
+    }
+    }
 }
