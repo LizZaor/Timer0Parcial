@@ -69,7 +69,6 @@ void main(void) {
        }       
     }
     
-    
     if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
     aux++;
     if(aux==1){//puerto D

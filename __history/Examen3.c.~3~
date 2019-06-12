@@ -3,8 +3,11 @@
 #include <stdlib.h>
 #fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
-#USE DELAY (clock=40000000)
+#USE DELAY (clock 40000000)
+#define Conteo 0
 #define flagserial 0
+int CaracterRecibido;
+int contador;
 #define __DEBUG_SERIAL__ //Si comentas esta linea se deshabilita el debug por serial y el PIN_C6 puede ser usado en forma digital I/O
 
 #ifdef __DEBUG_SERIAL__
@@ -13,10 +16,7 @@
    #use RS232(BAUD=9600, XMIT=TX_232, BITS=8,PARITY=N, STOP=1,UART1,RCV=RX_232)
    #use fast_io(c)
 #endif 
-int CaracterRecibido;
-int contador=0;
 
-int aux=0;
 #int_rda
 void isr_rda(void){
     CaracterRecibido=getc();
@@ -27,7 +27,7 @@ void isr_rda(void){
 void timer_0()
 { 
     set_timer0(15536);
-    contador++;
+    contador200++;
 }
 void main(void) {
     setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8);
@@ -37,74 +37,51 @@ void main(void) {
     output_a(0x0);   
     output_b(0x0);    
     output_d(0x0);
-    int16 conteo;
+    
     while (TRUE) {
     
     if(flagserial==0){
     CaracterRecibido;
-    
     if(CaracterRecibido=="x"|| CaracterRecibido=="X"){
-    aux++;
-       if(aux==1){//puerto A
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_a(conteo);
-            delay_ms(500);
-        }
-       aux++;
-       }else if(aux==2){//puerto B
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_b(conteo);
-            delay_ms(500);
-        }
-       aux++;
-       }else if(aux==3){//puerto C
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_a(conteo);
-            delay_ms(500);
-        }
-       aux=1;
-       }       
+    conteo++;
+       if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
+       }      
     }
-    
-    
     if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
-    aux++;
-    if(aux==1){//puerto D
-        
-       aux++;
-       }else if(aux==2){//puerto B
-       aux++;
-       }else if(aux==3){//puerto A
-       aux=1;
+    conteo++;
+    if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
        }      
     }
-    
     if(CaracterRecibido=="i"|| CaracterRecibido=="I"){
-    aux++;
-    if(aux==1){
-       aux++;
-       }else if(aux==2){
-       aux++;
-       }else if(aux==3){
-       aux=1;
+    conteo++;
+    if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
        }      
     }
-    
-    
     if(CaracterRecibido=="d"|| CaracterRecibido=="D"){
-    aux++;
-    if(aux==1){
-       aux++;
-       }else if(aux==2){
-       aux++;
-       }else if(aux==3){
-       aux=1;
+    conteo++;
+    if(conteo==1){
+       conteo++;
+       }else if(conteo==2){
+       conteo++;
+       }else if(conteo==3){
+       conteo=1
        }      
     }
-    
     }
     }
 }

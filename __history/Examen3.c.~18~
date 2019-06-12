@@ -4,6 +4,7 @@
 #fuses HS, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
 #USE DELAY (clock=40000000)
+#define Conteo 0
 #define flagserial 0
 #define __DEBUG_SERIAL__ //Si comentas esta linea se deshabilita el debug por serial y el PIN_C6 puede ser usado en forma digital I/O
 
@@ -20,7 +21,7 @@ int aux=0;
 #int_rda
 void isr_rda(void){
     CaracterRecibido=getc();
-    flagserial=0;
+    flags=0;
 }
 
 #int_timer0
@@ -45,39 +46,27 @@ void main(void) {
     
     if(CaracterRecibido=="x"|| CaracterRecibido=="X"){
     aux++;
-       if(aux==1){//puerto A
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_a(conteo);
-            delay_ms(500);
-        }
+       if(aux==1){
        aux++;
-       }else if(aux==2){//puerto B
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_b(conteo);
-            delay_ms(500);
-        }
+       }else if(aux==2){
        aux++;
-       }else if(aux==3){//puerto C
-       for(conteo=128;conteo>=1;conteo/=2)
-        {
-            output_a(conteo);
-            delay_ms(500);
-        }
+       }else if(aux==3){
        aux=1;
        }       
     }
     
-    
     if(CaracterRecibido=="y"|| CaracterRecibido=="Y"){
     aux++;
-    if(aux==1){//puerto D
-        
+    if(aux==1){//puerto A
+        for(conteo=128;conteo>=1;conteo/=2)
+        {
+            output_a(conteo);
+            delay_ms(500);
+        }
        aux++;
        }else if(aux==2){//puerto B
        aux++;
-       }else if(aux==3){//puerto A
+       }else if(aux==3){
        aux=1;
        }      
     }
